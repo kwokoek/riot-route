@@ -1,12 +1,19 @@
 var express = require('express');
+
 var app = express();
 
-app.get('/', function (req, res) {
-    res.send('idx');
-});
-
+app.set('port', process.env.PORT || 7000);
+app.set('view engine', 'ejs');
 app.use(express.static('public'));
 
-app.listen(7000, function () {
-    console.log('listening on port 7000');
+app.get('/', function (req, res) {
+  var indexMap = {};
+  indexMap.languageSetting = req.headers["accept-language"] ? req.headers["accept-language"].toString().split(',')[0] : 'en';
+  res.render('index.ejs', indexMap);
+});
+
+var server = app.listen(app.get('port'), function() {
+  var host = server.address().address;
+  var port = server.address().port;
+  console.log('Listening at http://%s:%s', host, port);
 });

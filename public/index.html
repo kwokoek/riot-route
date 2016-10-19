@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <title>Question Request</title>
+  </head>
+  <style>
+    body {
+      background-color: #f1f1f1
+    }
+  </style>
+
+  <script src="_compiled/vendorScripts.js"></script>
+  <body>
+    <header></header>
+    <div id="content"></div>
+    <script type="riot/tag" src="questionEN.tag"></script>
+    <script type="riot/tag" src="header.tag"></script>
+    <script type="riot/tag" src="complete.tag"></script>
+    
+    <script>
+      riot.mount('header')
+      var router = riot.route.create()
+      router('/', function() {
+        riot.mount('div#content', 'question')
+      })
+      router('complete', function() {
+        riot.mount('div#content', 'complete')
+      })
+
+      riot.route.start(true);
+    </script>
+  </body>
+</html>

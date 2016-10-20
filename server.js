@@ -1,36 +1,18 @@
-var express = require('express');
-var fs = require('fs')
+var express = require('express'),
+  languageHandler = require('./lib/languageHandler.js');
 
+languageHandler.initLanguages();
 var app = express();
 
 app.set('port', process.env.PORT || 7000);
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 
-function getSupportedLanguages() {
-  var dir = 'public/languages/';
-  var available_languages = { options:[] };
-  var lang_files = fs.readdirSync(dir);
-
-  for (var idx in lang_files) {
-    var language_file = lang_files[idx];
-    // Only care about json files
-    if (language_file.indexOf('json') == -1)  {
-      continue;
-    }
-
-    var file_content = fs.readFileSync(dir+language_file, 'utf8');
-    var jsn = JSON.parse(file_content);
-    available_languages["options"].push({title: jsn["language"], code: language_file})
-  }
-  return available_languages;
-}  
-
 app.get('/', function (req, res) {
   var indexMap = {};
   indexMap.languageSetting = req.headers["accept-language"] ? req.headers["accept-language"].toString().split(',')[0] : 'en';
-  indexMap.languages_supported = JSON.stringify(getSupportedLanguages());
-  indexMap.resource_file = JSON.stringify({"question":"Are you something something something?","yes":"Yes!","no":"No!","complete":"Thank you for your response..."});
+  indexMap.languages_supported = JSON.stringify(languageHandler.getSupportedLanguages());
+  indexMap.resource_file = JSON.stringify(languageHandler.getLanguageResource('en'));
   res.render('index.ejs', indexMap);
 });
 

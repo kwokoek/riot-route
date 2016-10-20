@@ -5,9 +5,8 @@
       <img src="img/way.jpeg" class="header_top_img" />
     </div>
     <div class="language_block">
-      <select id="language_selector">
-        <option selected="selected" value="EN.json">English</option>
-        <option value="DE.json">DEe</option>
+      <select id="language_selector" >
+        <option  each={ languages.options } value="{code}">{title}</option>
       </select>
     </div>
   </div>

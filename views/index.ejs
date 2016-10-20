@@ -17,7 +17,7 @@
     <script type="riot/tag" src="tag/complete.tag"></script>
     
     <script>
-      var languages = {"options":[{title:"English", code:"EN"},{title:"Deutsch", code:"DE"},{title:"Esp", code:"ES"}]};
+      var languages =  JSON.parse('<%- languages_supported %>');
       riot.mount('header')
       var router = riot.route.create()
       router('/', function() {

@@ -9,6 +9,7 @@ app.use(express.static('public'));
 app.get('/', function (req, res) {
   var indexMap = {};
   indexMap.languageSetting = req.headers["accept-language"] ? req.headers["accept-language"].toString().split(',')[0] : 'en';
+  indexMap.languages_supported = JSON.stringify({"options":[{title:"English", code:"EN"},{title:"Deutsch", code:"DE"},{title:"Esp", code:"ES"}]});
   res.render('index.ejs', indexMap);
 });
 

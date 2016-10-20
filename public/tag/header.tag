@@ -5,13 +5,18 @@
       <img src="img/way.jpeg" class="header_top_img" />
     </div>
     <div class="language_block">
-      <select id="language_selector" >
+      <select id="language_selector" onchange={languageChanged}>
         <option  each={ languages.options } value="{code}">{title}</option>
       </select>
     </div>
   </div>
 
   <script>
+
+  languageChanged(e) {
+    // notify parent of resource file load change
+    loadResourceFile(e.target.value);
+  }
     
   </script>
 

@@ -2,11 +2,11 @@
 <complete>
   
   <div class='complete_block'>
-    <h3>{ message }</h3>
+    <h3>{ resource_file.complete }</h3>
   </div>
 
   <script>
-    this.message = 'Thank you for your response..'
+    
   </script>
 
   <style scoped>

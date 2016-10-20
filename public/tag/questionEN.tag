@@ -3,21 +3,17 @@
   
   <div class='question_block'>
     <div class='question_item'>
-      <h3>{ message }</h3>
+      <h3>{ resource_file.question }</h3>
       <div class='answerBlock'>
-        <button class="button buttonYes" onclick={save} value='yes') >{yes}</button>
+        <button class="button buttonYes" onclick={save} value='yes') >{resource_file.yes}</button>
       </div>
       <div class='answerBlock'>
-        <button class="button buttonNo" onclick={save} value='no'>{no}</button>
+        <button class="button buttonNo" onclick={save} value='no'>{resource_file.no}</button>
       </div>
     </div>
   </div>
 
   <script>
-    this.message = 'Are you something something?'
-    this.yes = 'Yes'
-    this.no = 'No'
-
 
     save(e) {
       console.log("Answered-"+e.currentTarget.value);

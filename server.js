@@ -10,6 +10,7 @@ app.get('/', function (req, res) {
   var indexMap = {};
   indexMap.languageSetting = req.headers["accept-language"] ? req.headers["accept-language"].toString().split(',')[0] : 'en';
   indexMap.languages_supported = JSON.stringify({"options":[{title:"English", code:"EN"},{title:"Deutsch", code:"DE"},{title:"Esp", code:"ES"}]});
+  indexMap.resource_file = JSON.stringify({"question":"Are you something something something?","yes":"Yes!","no":"No!","complete":"Thank you for your response..."});
   res.render('index.ejs', indexMap);
 });
 

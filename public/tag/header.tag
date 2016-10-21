@@ -6,7 +6,7 @@
     </div>
     <div class="language_block">
       <select id="language_selector" onchange={languageChanged}>
-        <option  each={ languages.options } value="{code}">{title}</option>
+        <option  each={ languages.options } selected="{code == resource_file.lang_code}" value="{code}">{title}</option>
       </select>
     </div>
   </div>

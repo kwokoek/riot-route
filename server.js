@@ -9,10 +9,11 @@ app.set('view engine', 'ejs');
 app.use(express.static('public'));
 
 app.get('/', function (req, res) {
+  var acceptLanguage = languageHandler.getLanguageCodeFromRequest(req);
+
   var indexMap = {};
-  indexMap.languageSetting = req.headers["accept-language"] ? req.headers["accept-language"].toString().split(',')[0] : 'en';
   indexMap.languages_supported = JSON.stringify(languageHandler.getSupportedLanguages());
-  indexMap.resource_file = JSON.stringify(languageHandler.getLanguageResource('en'));
+  indexMap.resource_file = JSON.stringify(languageHandler.getLanguageResource(acceptLanguage));
   res.render('index.ejs', indexMap);
 });
 

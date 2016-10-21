@@ -31,9 +31,12 @@
       riot.route.start(true);
 
       function loadResourceFile(lang_code) {
-        resource_file = {"question":"Snakes?","yes":"Y!","no":"N!","complete":"Thank you ..."};
-        // Need to manually tell riot to update the new resource file
-        riot.update();
+        $.getJSON( "languages/"+lang_code+".json", function( data ) {
+          resource_file = data;
+          // Need to manually tell riot to update the new resource file
+          riot.update();
+        });
+
 
       }
     </script>

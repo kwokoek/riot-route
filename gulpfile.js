@@ -4,7 +4,8 @@ var gulp = require('gulp'),
 
 gulp.task('vendor_scripts', function() {
   return gulp.src(['./node_modules/riot/riot.js',
-      './node_modules/riot/riot+compiler.js'])
+      './node_modules/riot/riot+compiler.js',
+      './scripts/jquery-3.1.1.min.js'])
     .pipe(concat('vendorScripts.js'))
     .pipe(uglify())
     .pipe(gulp.dest('public/_compiled'));
